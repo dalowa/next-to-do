@@ -1,0 +1,13 @@
+{
+  "name": "next-to-do",
+  "version": "1.0.0",
+  "description": "CRUD avanzado de To-Do List en TypeScript con TailwindCSS",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "tailwindcss": "^3.0.0"
+  }
+}
