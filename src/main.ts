@@ -337,5 +337,38 @@ async function actualizarLista() {
   const todasLasTareas = await obtenerTareas();
   await renderTareas(todasLasTareas);
 }
+// ============ INICIALIZACIÓN ============
 
+async function main() {
+  console.log('🚀 Next To Do - Inicializando aplicación...');
+  
+  const formTarea = document.getElementById('form-tarea');
+  const formFiltro = document.getElementById('form-filtro');
+  
+  if (formTarea) {
+    formTarea.addEventListener('submit', onFormSubmit);
+    console.log('✅ Event listener agregado al formulario de tareas');
+  } else {
+    console.error('❌ No se encontró el formulario de tareas');
+  }
+  
+  if (formFiltro) {
+    formFiltro.addEventListener('submit', onFiltrar);
+    console.log('✅ Event listener agregado al formulario de filtros');
+  } else {
+    console.error('❌ No se encontró el formulario de filtros');
+  }
+  
+  try {
+    await cargarTareasFakeAPI();
+    console.log('📡 Datos de fake API cargados exitosamente');
+    await actualizarLista();
+    console.log('📋 Lista de tareas actualizada');
+    console.log('🎉 TaskFlow Pro listo para usar!');
+  } catch (error) {
+    console.error('❌ Error al cargar datos iniciales:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', main);
 
